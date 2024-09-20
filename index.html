@@ -78,7 +78,22 @@ body {
 		</style>
 		<link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
 <link rel="apple-touch-icon" href="index.apple-touch-icon.png"/>
+<script>
+function getFile(callback) {
+	window.input = document.createElement("input");
+	input.type = 'file';
+	
+	input.onchange = e => {
+		var file = e.target.files[0];
+		var reader = new FileReader();
+		reader.readAsText(file, 'UTF-8');
 
+		reader.onload = readerEvent => {
+			callback(readerEvent.target.result);
+		}
+	}
+}
+</script>
 	</head>
 	<body>
 		<canvas id="canvas">
@@ -97,7 +112,7 @@ body {
 
 		<script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":873776,"index.wasm":43016933},"focusCanvas":true,"gdextensionLibs":[]};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":876752,"index.wasm":43016933},"focusCanvas":true,"gdextensionLibs":[]};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
